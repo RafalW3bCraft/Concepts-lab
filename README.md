@@ -64,9 +64,3 @@ This repository is licensed under the **MIT License** — you are free to learn 
 **RafalW3bCraft**
 🔗 [GitHub Profile](https://github.com/RafalW3bCraft)
 
-```
-
----
-
-Would you like me to also add **badges** (like MIT license, made with ❤️, or tech stack) at the top so it looks even more **GitHub-pro ready**?
-```

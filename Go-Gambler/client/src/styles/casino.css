@@ -1,0 +1,1064 @@
+/* 1WIN-Style Casino App */
+.casino-app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0B1426 0%, #1A2B5C 50%, #0F1E3A 100%);
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
+
+/* Game UI Overlay */
+.game-ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  display: block;
+}
+
+.game-ui > * {
+  pointer-events: auto;
+}
+
+/* Top UI Bar */
+.ui-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(26, 43, 92, 0.95) 100%);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 1000;
+}
+
+.casino-branding h1 {
+  background: linear-gradient(135deg, #3B82F6 0%, #06D6A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.casino-branding p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Modern Credit Display */
+.credit-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.9) 0%, rgba(26, 43, 92, 0.9) 100%);
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.credit-display.animating {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(59, 130, 246, 0.8);
+}
+
+.credit-icon {
+  font-size: 1.5rem;
+}
+
+.credit-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.credit-label {
+  color: #cccccc;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.credit-value {
+  background: linear-gradient(135deg, #06D6A0 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
+}
+
+/* Modern Sound Toggle */
+.sound-toggle {
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.9) 0%, rgba(26, 43, 92, 0.9) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #3B82F6;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sound-toggle:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(26, 43, 92, 0.9) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.sound-toggle.muted {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+/* Modern Game Selector */
+.game-selector {
+  position: absolute;
+  top: 100px;
+  left: 24px;
+  width: 320px;
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(26, 43, 92, 0.95) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.game-selector h2 {
+  background: linear-gradient(135deg, #3B82F6 0%, #06D6A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.game-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-btn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(6, 214, 160, 0.1) 100%);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+}
+
+.game-btn.active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(6, 214, 160, 0.15) 100%);
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.game-icon {
+  font-size: 2rem;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.game-desc {
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+/* Instructions Panel */
+.instructions {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.instruction-panel h3 {
+  color: #ffd700;
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.instruction-panel p {
+  color: #cccccc;
+  margin: 5px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Modern Mobile Navigation */
+.mobile-nav {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.9) 0%, rgba(26, 43, 92, 0.9) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 214, 160, 0.1) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #3B82F6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ui-top {
+    height: 60px;
+    padding: 0 10px;
+  }
+  
+  .casino-branding h1 {
+    font-size: 1.3rem;
+  }
+  
+  .casino-branding p {
+    font-size: 0.7rem;
+  }
+  
+  .credit-display {
+    padding: 8px 15px;
+  }
+  
+  .credit-value {
+    font-size: 1rem;
+  }
+  
+  .game-selector {
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+  
+  .instructions {
+    bottom: 100px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+  
+  .mobile-nav {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    justify-content: center;
+  }
+  
+  .nav-btn {
+    flex: 1;
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ui-top {
+    flex-direction: column;
+    height: 100px;
+    padding: 5px;
+  }
+  
+  .game-selector {
+    top: 110px;
+  }
+  
+  .instructions {
+    bottom: 120px;
+  }
+}
+
+/* Modern 2D Casino */
+.casino-2d {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0B1426 0%, #1A2B5C 50%, #0F1E3A 100%);
+  position: relative;
+  overflow: hidden;
+  animation: backgroundShift 20s ease-in-out infinite alternate;
+}
+
+.casino-background {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, rgba(26, 43, 92, 0.8) 50%, rgba(11, 20, 38, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.casino-main-area {
+  width: 90%;
+  max-width: 1200px;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modern Slot Machine */
+.slot-machine-2d {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.slot-machine-frame {
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(26, 43, 92, 0.95) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  backdrop-filter: blur(20px);
+}
+
+.slot-reels {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.reel {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(26, 43, 92, 0.4) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 16px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(59, 130, 246, 0.1);
+}
+
+.symbol-display {
+  font-size: 4rem;
+  animation: symbol-glow 2s ease-in-out infinite alternate;
+}
+
+.slot-controls {
+  margin: 30px 0;
+}
+
+.spin-button {
+  background: linear-gradient(135deg, #3B82F6 0%, #06D6A0 100%);
+  border: none;
+  border-radius: 16px;
+  padding: 16px 48px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spin-button:hover:not(.disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563EB 0%, #059669 100%);
+}
+
+.spin-button.disabled {
+  background: linear-gradient(135deg, rgba(107, 114, 128, 0.5) 0%, rgba(75, 85, 99, 0.5) 100%);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.win-display {
+  background: linear-gradient(135deg, #06D6A0 0%, #10B981 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 24px 0;
+  animation: win-pulse 1s ease-in-out infinite alternate;
+  box-shadow: 0 0 40px rgba(6, 214, 160, 0.4);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.win-text {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.win-amount {
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+/* Modern Blackjack */
+.blackjack-2d {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.blackjack-frame {
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(26, 43, 92, 0.95) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  backdrop-filter: blur(20px);
+}
+
+.blackjack-table {
+  margin: 30px 0;
+}
+
+.dealer-area, .player-area {
+  margin: 30px 0;
+}
+
+.dealer-area h3, .player-area h3 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.hand {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 80px;
+  height: 112px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-back {
+  background: linear-gradient(145deg, #8B0000 0%, #4B0000 100%);
+  color: #ffd700;
+}
+
+.card.red {
+  color: red;
+}
+
+.card.black {
+  color: black;
+}
+
+.card-value {
+  font-size: 1.5rem;
+}
+
+.card-suit {
+  font-size: 2rem;
+  margin-top: 5px;
+}
+
+.blackjack-controls {
+  margin: 30px 0;
+}
+
+.deal-button, .action-button {
+  background: linear-gradient(135deg, #3B82F6 0%, #06D6A0 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  margin: 0 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.play-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.deal-button:hover:not(.disabled), .action-button:hover:not(.disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563EB 0%, #059669 100%);
+}
+
+.deal-button.disabled, .action-button.disabled {
+  background: linear-gradient(135deg, rgba(107, 114, 128, 0.5) 0%, rgba(75, 85, 99, 0.5) 100%);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.result-display {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  color: #ffd700;
+}
+
+.result-text {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Modern Roulette */
+.roulette-2d {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.roulette-frame {
+  background: linear-gradient(135deg, rgba(13, 20, 38, 0.95) 0%, rgba(26, 43, 92, 0.95) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+}
+
+.roulette-wheel-container {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.roulette-wheel {
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 43, 92, 0.6) 100%);
+  position: relative;
+  transition: transform 0.1s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.roulette-wheel.spinning {
+  animation: wheel-spin 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3B82F6 0%, #06D6A0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.winning-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.winning-number.red {
+  color: red;
+}
+
+.winning-number.black {
+  color: black;
+}
+
+.winning-number.green {
+  color: green;
+}
+
+.wheel-logo {
+  font-size: 2rem;
+}
+
+.wheel-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wheel-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.wheel-number.red {
+  background: red;
+  color: white;
+}
+
+.wheel-number.black {
+  background: black;
+  color: white;
+}
+
+.wheel-number.green {
+  background: green;
+  color: white;
+}
+
+.betting-area {
+  margin: 30px 0;
+}
+
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 5px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.number-bet {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.number-bet.red {
+  background: #cc0000;
+  color: white;
+}
+
+.number-bet.black {
+  background: #333;
+  color: white;
+}
+
+.number-bet.green {
+  background: #006600;
+  color: white;
+}
+
+.number-bet:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.number-bet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.number-bet.has-bet {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.bet-chip {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.outside-bets {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.outside-bet {
+  padding: 10px 20px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.outside-bet.red {
+  background: #cc0000;
+  color: white;
+}
+
+.outside-bet.black {
+  background: #333;
+  color: white;
+}
+
+.outside-bet.even, .outside-bet.odd {
+  background: #666;
+  color: white;
+}
+
+.outside-bet:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.outside-bet.has-bet {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.roulette-controls {
+  margin: 30px 0;
+}
+
+.bet-info {
+  color: #ffd700;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.clear-button {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+}
+
+.clear-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+}
+
+.game-title {
+  background: linear-gradient(135deg, #3B82F6 0%, #06D6A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.game-info {
+  color: #cccccc;
+  margin-top: 30px;
+}
+
+.game-info p {
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes symbol-glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes win-pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes wheel-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+@keyframes spin-reel-1 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+@keyframes spin-reel-2 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+@keyframes spin-reel-3 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.credit-display.animating {
+  animation: pulse 0.6s ease-in-out;
+}
+
+.game-btn.active {
+  animation: glow 2s infinite;
+}
+
+/* Touch Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .game-btn, .nav-btn, .sound-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .game-btn:active {
+    background: rgba(255, 215, 0, 0.3);
+    transform: scale(0.95);
+  }
+  
+  .nav-btn:active, .sound-toggle:active {
+    transform: scale(0.9);
+  }
+}
+
+/* Loading States */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+  text-align: center;
+  color: #ffd700;
+}
+
+.spinner-icon {
+  font-size: 3rem;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes backgroundShift {
+  0% { background: linear-gradient(135deg, #0B1426 0%, #1A2B5C 50%, #0F1E3A 100%); }
+  100% { background: linear-gradient(135deg, #1A2B5C 0%, #0F1E3A 50%, #0B1426 100%); }
+}
+
+.loading-spinner p {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Game Loading States */
+.game-loading {
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.spinning-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffd700;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  animation: pulse 1s infinite;
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .casino-branding h1,
+  .credit-value {
+    text-rendering: optimizeLegibility;
+  }
+}

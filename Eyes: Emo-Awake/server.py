@@ -6,7 +6,6 @@ import os
 
 class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
-        # Add security headers and cache control
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
         self.send_header('Pragma', 'no-cache')
         self.send_header('Expires', '0')
@@ -28,24 +27,21 @@ PORT = 5000
 Handler = CustomHTTPRequestHandler
 
 print(f"Starting server at http://0.0.0.0:{PORT}")
-print("Serving Mythic Eyes: Emotion Awakening AR Scanner")
+print("Serving Eyes: Emotion Awakening AR Scanner")
 
 try:
     with socketserver.TCPServer(("0.0.0.0", PORT), Handler) as httpd:
-        # Allow socket reuse to prevent "Address already in use" errors
         httpd.allow_reuse_address = True
         httpd.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         httpd.serve_forever()
 except OSError as e:
-    if e.errno == 98:  # Address already in use
+    if e.errno == 98:  
         print(f"Port {PORT} is already in use. Attempting to terminate existing processes...")
         import subprocess
         try:
-            # Kill any existing process on port 5000
             subprocess.run(['pkill', '-f', 'server.py'], check=False)
             subprocess.run(['fuser', '-k', f'{PORT}/tcp'], check=False)
             print("Existing processes terminated. Retrying...")
-            # Retry after cleanup
             with socketserver.TCPServer(("0.0.0.0", PORT), Handler) as httpd:
                 httpd.allow_reuse_address = True
                 httpd.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

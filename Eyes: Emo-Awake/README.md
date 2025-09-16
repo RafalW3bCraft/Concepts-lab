@@ -54,29 +54,10 @@ Open: `http://localhost:5000`
 - **✨ Sparks** - Particle effects
 - **🜂 Aura** - Mystical glow
 
-## Technical Stack
-
-**Frontend:** HTML5/CSS3/JavaScript  
-**ML Engine:** MediaPipe Tasks Vision  
-**Graphics:** Canvas API  
-**Camera:** WebRTC
-
-### Architecture
-```
-Face Detection → Emotion Analysis → Persona Mapping → Visual Effects
-```
-
-### Key Features
-- 468+ facial landmarks
-- 60 FPS rendering
-- GPU acceleration
-- Real-time blendshapes
-- Additive lighting effects
-
 ## Project Structure
 
 ```
-mythic-eyes/
+Eyes: Emo-Awake/
 ├── README.md     # Documentation
 ├── scan.html    # Main application
 └── server.py    # Development server
@@ -95,51 +76,6 @@ mythic-eyes/
 - **Iris Size** - 80-200%
 - **Bloom Effect** - 0-150%
 - **Manual Persona** - Override auto-detection
-
-## Performance
-
-- **Frame Rate** - 60 FPS real-time
-- **Latency** - <50ms response
-- **Accuracy** - 85%+ emotion detection
-- **Hardware** - GPU accelerated ML
-
-## Browser Support
-
-**Compatible:**
-- Chrome 88+ (recommended)
-- Firefox 85+
-- Safari 14+
-- Edge 88+
-
-**Required APIs:**
-- MediaDevices
-- Canvas 2D
-- WebAssembly
-- ES6 Modules
-
-## Troubleshooting
-
-### Camera Issues
-**No camera feed:**
-- Check permissions
-- Close other camera apps
-- Refresh page
-
-**Poor detection:**
-- Improve lighting
-- Center face
-- Remove obstructions
-
-### Performance Issues
-**Lag/stuttering:**
-- Close browser tabs
-- Reduce effect intensity
-- Use newer browser
-
-**No effects:**
-- Enable Live Preview
-- Verify face detection
-- Clear browser cache
 
 ### Quick Fixes
 1. **Black screen** - Grant camera permissions

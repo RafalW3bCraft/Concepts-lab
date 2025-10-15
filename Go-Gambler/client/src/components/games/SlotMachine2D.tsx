@@ -22,7 +22,6 @@ export default function SlotMachine2D() {
   const { totalCredits } = useCasino();
   const { playHit, playSuccess } = useAudio();
 
-  // Play sound effects
   useEffect(() => {
     if (isSpinning) {
       playHit();
@@ -35,7 +34,6 @@ export default function SlotMachine2D() {
     }
   }, [lastWin, playSuccess]);
 
-  // Handle reel animations
   useEffect(() => {
     if (isSpinning) {
       [reel1Ref, reel2Ref, reel3Ref].forEach((ref, index) => {

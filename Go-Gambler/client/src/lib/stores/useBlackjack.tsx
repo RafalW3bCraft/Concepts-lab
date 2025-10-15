@@ -14,7 +14,6 @@ interface BlackjackState {
   currentBet: number;
   showDealerCard: boolean;
   
-  // Actions
   deal: () => void;
   hit: () => void;
   stand: () => void;
@@ -50,7 +49,6 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
     
     let gameState: GameState = "playing";
     
-    // Check for blackjack
     if (playerScore === 21) {
       gameState = "blackjack";
       const payout = Math.floor(state.currentBet * 2.5);
@@ -97,7 +95,6 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
     let dealerHand = [...state.dealerHand];
     let dealerScore = calculateHandValue(dealerHand);
     
-    // Dealer must hit on 16 and stand on 17
     while (dealerScore < 17) {
       dealerHand.push(state.deck.pop()!);
       dealerScore = calculateHandValue(dealerHand);
@@ -121,7 +118,7 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
       casino.recordLoss(state.currentBet);
     } else {
       gameState = "push";
-      casino.addCredits(state.currentBet); // Return bet
+      casino.addCredits(state.currentBet);
     }
     
     set({
@@ -147,7 +144,6 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
       currentBet: state.currentBet * 2
     });
     
-    // Automatically stand after doubling
     setTimeout(() => {
       get().stand();
     }, 1000);

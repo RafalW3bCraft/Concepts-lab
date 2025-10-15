@@ -38,7 +38,7 @@ export function calculatePayout(bets: Record<string, number>, winningNumber: num
     switch (type) {
       case "number":
         if (parseInt(value) === winningNumber) {
-          totalPayout += amount * 36; // 35:1 + original bet
+          totalPayout += amount * 36;
         }
         break;
         

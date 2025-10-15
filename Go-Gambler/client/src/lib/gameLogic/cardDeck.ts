@@ -48,7 +48,6 @@ export function calculateHandValue(hand: Card[]): number {
     }
   });
   
-  // Adjust for aces
   while (value > 21 && aces > 0) {
     value -= 10;
     aces--;

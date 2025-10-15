@@ -13,7 +13,6 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', '*')
-        # Camera access permissions
         self.send_header('Permissions-Policy', 'camera=*, microphone=*')
         self.send_header('Feature-Policy', 'camera *; microphone *')
         super().end_headers()
@@ -35,7 +34,7 @@ try:
         httpd.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         httpd.serve_forever()
 except OSError as e:
-    if e.errno == 98:  
+    if e.errno == 98:
         print(f"Port {PORT} is already in use. Attempting to terminate existing processes...")
         import subprocess
         try:

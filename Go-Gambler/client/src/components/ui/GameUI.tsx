@@ -16,7 +16,7 @@ export default function GameUI() {
 
   return (
     <div className="game-ui" style={{ display: 'block', visibility: 'visible' }}>
-      {/* Top UI Bar */}
+      
       <div className="ui-top">
         <div className="casino-branding">
           <h1>GO-GAMBLER</h1>
@@ -33,10 +33,10 @@ export default function GameUI() {
         </button>
       </div>
 
-      {/* Game Selection */}
+      
       <GameSelector />
 
-      {/* Instructions */}
+      
       <div className="instructions">
         <div className="instruction-panel">
           <h3>Game Controls</h3>
@@ -67,7 +67,7 @@ export default function GameUI() {
         </div>
       </div>
 
-      {/* Mobile-friendly navigation */}
+      
       <div className="mobile-nav">
         <button 
           className={`nav-btn ${currentGame === 'slots' ? 'active' : ''}`} 

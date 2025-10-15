@@ -22,11 +22,10 @@ export function generateSlotResult(): SlotResult {
     generateReel()
   ];
   
-  // Get the visible symbols (middle row)
   const symbols = [
-    reels[0][10], // Middle of reel 1
-    reels[1][10], // Middle of reel 2
-    reels[2][10]  // Middle of reel 3
+    reels[0][10],
+    reels[1][10],
+    reels[2][10]
   ];
   
   const winningLines = checkWinningLines(symbols);
@@ -68,7 +67,6 @@ function generateReel(): string[] {
 function checkWinningLines(symbols: string[]): number[] {
   const winningLines = [];
   
-  // Check horizontal line (middle row)
   if (symbols[0] === symbols[1] && symbols[1] === symbols[2]) {
     winningLines.push(1);
   }

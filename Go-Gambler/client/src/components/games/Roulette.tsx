@@ -34,22 +34,19 @@ export default function Roulette() {
   const { totalCredits } = useCasino();
   const { playHit, playSuccess } = useAudio();
 
-  // Handle wheel and ball animation
   useFrame((state, delta) => {
     if (wheelRef.current) {
       wheelRef.current.rotation.y = wheelRotation;
     }
     
     if (ballRef.current) {
-      const wheelCenter = [6, 0.6, -3]; // Wheel center position
+      const wheelCenter = [6, 0.6, -3];
       if (isSpinning) {
-        // Smooth ball movement in a circular path
         const radius = 4.6;
         ballRef.current.position.x = wheelCenter[0] + Math.cos(ballPosition) * radius;
         ballRef.current.position.z = wheelCenter[2] + Math.sin(ballPosition) * radius;
         ballRef.current.position.y = wheelCenter[1] + 0.1;
       } else {
-        // When not spinning, position ball at the winning number
         if (lastWinningNumber !== null) {
           const numberIndex = NUMBERS.indexOf(lastWinningNumber);
           const angle = (numberIndex / NUMBERS.length) * Math.PI * 2;
@@ -119,7 +116,6 @@ export default function Roulette() {
 
   const renderBettingArea = () => {
     const bettingSpots = [
-      // Single numbers
       ...NUMBERS.slice(1).map((num, i) => ({
         type: "number",
         value: num,
@@ -131,7 +127,6 @@ export default function Roulette() {
         label: num.toString(),
         color: getNumberColor(num)
       })),
-      // Outside bets
       { type: "red", value: "red", position: [-7, 1.2, 2] as [number, number, number], label: "RED", color: "#ff0000" },
       { type: "black", value: "black", position: [-5, 1.2, 2] as [number, number, number], label: "BLACK", color: "#000000" },
       { type: "even", value: "even", position: [-3, 1.2, 2] as [number, number, number], label: "EVEN", color: "#444444" },
@@ -178,17 +173,17 @@ export default function Roulette() {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      {/* Roulette table */}
+      
       <Box args={[20, 0.2, 12]} position={[0, 0, 0]}>
         <meshStandardMaterial color="#0f5132" />
       </Box>
 
-      {/* Wheel base */}
+      
       <Cylinder args={[5.5, 5.5, 0.5]} position={[6, 0.3, -3]}>
         <meshStandardMaterial color="#8B4513" />
       </Cylinder>
 
-      {/* Wheel */}
+      
       <group ref={wheelRef} position={[6, 0.6, -3]}>
         <Cylinder args={[4.8, 4.8, 0.2]} position={[0, 0, 0]}>
           <meshStandardMaterial color="#2c2c2c" />
@@ -196,13 +191,13 @@ export default function Roulette() {
         {NUMBERS.map((number, index) => renderWheelNumber(number, index))}
       </group>
 
-      {/* Ball */}
+      
       <mesh ref={ballRef} position={[10.8, 0.7, -3]}>
         <sphereGeometry args={[0.08]} />
         <meshStandardMaterial color="#ffffff" emissive="#222222" />
       </mesh>
 
-      {/* Game title */}
+      
       <Text
         position={[0, 2, -6]}
         fontSize={1}
@@ -213,10 +208,10 @@ export default function Roulette() {
         ROULETTE
       </Text>
 
-      {/* Betting area */}
+      
       {renderBettingArea()}
 
-      {/* Spin button */}
+      
       <Box
         args={[3, 0.8, 1]}
         position={[6, 1.5, -3]}
@@ -237,7 +232,7 @@ export default function Roulette() {
         {isSpinning ? "SPINNING..." : "SPIN"}
       </Text>
 
-      {/* Credits display */}
+      
       <Box args={[6, 1, 0.2]} position={[-8, 1.5, 4]}>
         <meshStandardMaterial color="#000000" />
       </Box>
@@ -251,7 +246,7 @@ export default function Roulette() {
         CREDITS: {totalCredits}
       </Text>
 
-      {/* Total bet display */}
+      
       <Box args={[6, 1, 0.2]} position={[-2, 1.5, 4]}>
         <meshStandardMaterial color="#000000" />
       </Box>
@@ -265,7 +260,7 @@ export default function Roulette() {
         TOTAL BET: {totalBet}
       </Text>
 
-      {/* Last winning number */}
+      
       {lastWinningNumber !== null && (
         <>
           <Box args={[4, 1, 0.2]} position={[4, 1.5, 4]}>

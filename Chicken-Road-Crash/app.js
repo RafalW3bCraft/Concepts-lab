@@ -42,7 +42,6 @@ const GAME_CONFIG = {
   maxMultiplier: 1000
 };
 
-// API calls
 class GameAPI {
   static currentRound = null;
   
@@ -81,10 +80,8 @@ class GameAPI {
     this.currentRound.currentStep++;
     const difficultyConfig = DIFFICULTIES[this.currentRound.difficulty];
     
-    // Calc new multiplier
     this.currentRound.multiplier = Math.pow(difficultyConfig.multiplierGrowth, this.currentRound.currentStep);
     
-    // Check if crashed
     if (this.currentRound.currentStep >= this.currentRound.crashPoint) {
       this.currentRound.crashed = true;
       return Promise.resolve({
@@ -202,7 +199,6 @@ function StartScreen({ onStartGame, balance, highScores }) {
   );
 }
 
-// Road Visualization Component
 function RoadPath({ currentStep, maxSteps, crashed, crashPoint }) {
   const segments = [];
   const totalSegments = 20;
@@ -238,7 +234,7 @@ function RoadPath({ currentStep, maxSteps, crashed, crashPoint }) {
 }
 
 function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
-  const [gameState, setGameState] = useState('betting'); // betting, playing, finished
+  const [gameState, setGameState] = useState('betting');
   const [currentStep, setCurrentStep] = useState(0);
   const [multiplier, setMultiplier] = useState(1.0);
   const [betAmount, setBetAmount] = useState(50);
@@ -272,7 +268,6 @@ function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
         setGameResult(null);
         setCrashed(false);
         
-        // Start the automatic steps
         stepInterval();
       }
     } catch (error) {
@@ -294,7 +289,6 @@ function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
             setCrashPoint(response.crashPoint);
             setGameState('finished');
             
-            // logic loss
             const newBalance = balance - betAmount;
             onBalanceChange(newBalance);
             setGameResult({
@@ -325,11 +319,9 @@ function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
       if (response.success) {
         setGameState('finished');
         
-        // logic win
         const newBalance = balance - betAmount + response.winnings;
         onBalanceChange(newBalance);
         
-        // Save high score
         GameAPI.saveHighScore(difficulty, response.multiplier, response.winnings);
         
         setGameResult({
@@ -403,7 +395,6 @@ function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
     );
   }
   
-  // Game result if finished
   if (gameResult) {
     gameInterfaceElements.push(
       React.createElement('div', { 
@@ -418,7 +409,6 @@ function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
     );
   }
   
-  // Add road path
   gameInterfaceElements.push(
     React.createElement(RoadPath, {
       key: 'road',
@@ -429,7 +419,6 @@ function GameInterface({ difficulty, balance, onGameEnd, onBalanceChange }) {
     })
   );
   
-  // Add game controls
   const controlElements = [];
   
   if (gameState === 'betting') {
@@ -552,7 +541,6 @@ function App() {
     GameAPI.getHighScores().then(setHighScores);
   }, [currentScreen]);
   
-  // Save balance to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('chickenRoadBalance', balance.toString());
   }, [balance]);
@@ -641,5 +629,4 @@ function App() {
   return React.createElement('div', { className: 'game-container' }, ...appElements);
 }
 
-// Render the app
 ReactDOM.render(React.createElement(App), document.getElementById('root'));

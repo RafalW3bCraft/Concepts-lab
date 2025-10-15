@@ -39,14 +39,14 @@ export default function Blackjack() {
     
     return (
       <group position={position}>
-        {/* Card background */}
+        
         <Box args={[1.2, 1.8, 0.1]}>
           <meshStandardMaterial
             color={hidden ? "#4a4a4a" : "#ffffff"}
           />
         </Box>
         
-        {/* Card content */}
+        
         {!hidden && (
           <>
             <Text
@@ -102,17 +102,17 @@ export default function Blackjack() {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      {/* Blackjack table */}
+      
       <Box args={[16, 10, 0.2]} position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <meshStandardMaterial color="#0f5132" />
       </Box>
 
-      {/* Table felt design */}
+      
       <Box args={[14, 8, 0.1]} position={[0, 0.15, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <meshStandardMaterial color="#198754" />
       </Box>
 
-      {/* Game title */}
+      
       <Text
         position={[0, 1, 4]}
         fontSize={1}
@@ -123,7 +123,7 @@ export default function Blackjack() {
         BLACKJACK
       </Text>
 
-      {/* Dealer area */}
+      
       <Text
         position={[0, 1, 2]}
         fontSize={0.5}
@@ -134,7 +134,7 @@ export default function Blackjack() {
         DEALER: {showDealerCard ? dealerScore : "?"}
       </Text>
 
-      {/* Dealer cards */}
+      
       {dealerHand.map((card, index) => 
         renderCard(
           card,
@@ -143,7 +143,7 @@ export default function Blackjack() {
         )
       )}
 
-      {/* Player area */}
+      
       <Text
         position={[0, 1, -2]}
         fontSize={0.5}
@@ -154,7 +154,7 @@ export default function Blackjack() {
         PLAYER: {playerScore}
       </Text>
 
-      {/* Player cards */}
+      
       {playerHand.map((card, index) => 
         renderCard(
           card,
@@ -162,9 +162,9 @@ export default function Blackjack() {
         )
       )}
 
-      {/* Game controls */}
+      
       <group position={[0, 1, -3.5]}>
-        {/* Deal button */}
+        
         <Box
           args={[2, 0.8, 0.3]}
           position={[-4, 0, 0]}
@@ -185,7 +185,7 @@ export default function Blackjack() {
           DEAL
         </Text>
 
-        {/* Hit button */}
+        
         <Box
           args={[2, 0.8, 0.3]}
           position={[-1.5, 0, 0]}
@@ -206,7 +206,7 @@ export default function Blackjack() {
           HIT
         </Text>
 
-        {/* Stand button */}
+        
         <Box
           args={[2, 0.8, 0.3]}
           position={[1, 0, 0]}
@@ -227,7 +227,7 @@ export default function Blackjack() {
           STAND
         </Text>
 
-        {/* Double button */}
+        
         <Box
           args={[2, 0.8, 0.3]}
           position={[3.5, 0, 0]}
@@ -249,7 +249,7 @@ export default function Blackjack() {
         </Text>
       </group>
 
-      {/* Credits and bet display */}
+      
       <Box args={[6, 1, 0.2]} position={[-5, 1, -4.5]}>
         <meshStandardMaterial color="#000000" />
       </Box>
@@ -276,7 +276,7 @@ export default function Blackjack() {
         BET: {currentBet}
       </Text>
 
-      {/* Game state display */}
+      
       {gameState !== "playing" && gameState !== "waiting" && (
         <Text
           position={[0, 2 + animationOffset, 0]}

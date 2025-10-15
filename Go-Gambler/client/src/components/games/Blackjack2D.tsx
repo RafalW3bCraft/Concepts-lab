@@ -49,7 +49,7 @@ export default function Blackjack2D() {
         <h2 className="game-title">🃏 Blackjack</h2>
         
         <div className="blackjack-table">
-          {/* Dealer Area */}
+          
           <div className="dealer-area">
             <h3>Dealer: {gameState === 'playing' ? '?' : dealerScore}</h3>
             <div className="hand">
@@ -59,7 +59,7 @@ export default function Blackjack2D() {
             </div>
           </div>
 
-          {/* Player Area */}
+          
           <div className="player-area">
             <h3>You: {playerScore}</h3>
             <div className="hand">

@@ -10,7 +10,6 @@ interface RouletteState {
   bets: Record<string, number>;
   totalBet: number;
   
-  // Actions
   spin: () => void;
   placeBet: (type: string, value: number | string) => void;
   clearBets: () => void;
@@ -32,18 +31,15 @@ export const useRoulette = create<RouletteState>((set, get) => ({
     
     if (!state.canSpin()) return;
     
-    // Deduct total bet
     if (!casino.removeCredits(state.totalBet)) return;
     
     set({ isSpinning: true });
     
     casino.recordSpin();
     
-    // Simulate wheel spin
     const result = spinWheel();
     const spinDuration = 4000;
     
-    // Animate wheel
     const startRotation = state.wheelRotation;
     const endRotation = startRotation + Math.PI * 10 + (result.number / 37) * Math.PI * 2;
     
@@ -53,7 +49,6 @@ export const useRoulette = create<RouletteState>((set, get) => ({
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / spinDuration, 1);
       
-      // Easing function
       const easeOut = 1 - Math.pow(1 - progress, 3);
       const currentRotation = startRotation + (endRotation - startRotation) * easeOut;
       const ballPos = Math.PI * 20 * progress;
@@ -66,7 +61,6 @@ export const useRoulette = create<RouletteState>((set, get) => ({
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        // Calculate payouts
         const payout = calculatePayout(state.bets, result.number);
         
         set({

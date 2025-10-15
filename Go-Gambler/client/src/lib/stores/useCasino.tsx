@@ -8,13 +8,11 @@ interface CasinoState {
   currentGame: GameType;
   totalCredits: number;
   
-  // Statistics
   totalWins: number;
   totalLosses: number;
   totalSpins: number;
   biggestWin: number;
   
-  // Actions
   setCurrentGame: (game: GameType) => void;
   addCredits: (amount: number) => void;
   removeCredits: (amount: number) => boolean;

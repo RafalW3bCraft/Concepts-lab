@@ -13,14 +13,12 @@ function App() {
   const { setBackgroundMusic, setHitSound, setSuccessSound } = useAudio();
   const [isLoading, setIsLoading] = useState(true);
 
-  // Initialize casino and audio on mount
   useEffect(() => {
     const initializeApp = async () => {
       try {
         console.log('Initializing casino...');
         initializeCasino();
         
-        // Load audio files with proper error handling
         try {
           const bgMusic = new Audio("/sounds/background.mp3");
           bgMusic.loop = true;
@@ -49,7 +47,6 @@ function App() {
           console.warn('Success sound failed to load:', error);
         }
 
-        // Simulate loading time for better UX
         setTimeout(() => {
           setIsLoading(false);
           console.log('Casino initialized successfully');
@@ -63,7 +60,6 @@ function App() {
     initializeApp();
   }, [initializeCasino, setBackgroundMusic, setHitSound, setSuccessSound]);
 
-  // Show loading screen
   if (isLoading) {
     return <LoadingScreen />;
   }

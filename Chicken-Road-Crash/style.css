@@ -1,5 +1,5 @@
 :root {
-  /* Primitive Color Tokens */
+  
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(0, 0, 0, 1);
   --color-cream-50: rgba(252, 252, 249, 1);
@@ -23,7 +23,7 @@
   --color-orange-400: rgba(230, 129, 97, 1);
   --color-orange-500: rgba(168, 75, 47, 1);
 
-  /* RGB versions for opacity control */
+  
   --color-brown-600-rgb: 94, 82, 64;
   --color-teal-500-rgb: 33, 128, 141;
   --color-slate-900-rgb: 19, 52, 59;
@@ -33,17 +33,17 @@
   --color-orange-500-rgb: 168, 75, 47;
   --color-orange-400-rgb: 230, 129, 97;
 
-  /* Background color tokens (Light Mode) */
-  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
-  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
-  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
-  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
-  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
-  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
-  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
-  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+  
+  --color-bg-1: rgba(59, 130, 246, 0.08); 
+  --color-bg-2: rgba(245, 158, 11, 0.08); 
+  --color-bg-3: rgba(34, 197, 94, 0.08); 
+  --color-bg-4: rgba(239, 68, 68, 0.08); 
+  --color-bg-5: rgba(147, 51, 234, 0.08); 
+  --color-bg-6: rgba(249, 115, 22, 0.08); 
+  --color-bg-7: rgba(236, 72, 153, 0.08); 
+  --color-bg-8: rgba(6, 182, 212, 0.08); 
 
-  /* Semantic Color Tokens (Light Mode) */
+  
   --color-background: var(--color-cream-50);
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
@@ -65,7 +65,7 @@
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
-  /* Common style patterns */
+  
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
   --status-bg-opacity: 0.15;
@@ -73,13 +73,13 @@
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-  /* RGB versions for opacity control */
+  
   --color-success-rgb: 33, 128, 141;
   --color-error-rgb: 192, 21, 47;
   --color-warning-rgb: 168, 75, 47;
   --color-info-rgb: 98, 108, 113;
 
-  /* Typography */
+  
   --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
@@ -101,7 +101,7 @@
   --line-height-normal: 1.5;
   --letter-spacing-tight: -0.01em;
 
-  /* Spacing */
+  
   --space-0: 0;
   --space-1: 1px;
   --space-2: 2px;
@@ -115,14 +115,14 @@
   --space-24: 24px;
   --space-32: 32px;
 
-  /* Border Radius */
+  
   --radius-sm: 6px;
   --radius-base: 8px;
   --radius-md: 10px;
   --radius-lg: 12px;
   --radius-full: 9999px;
 
-  /* Shadows */
+  
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
@@ -132,38 +132,38 @@
   --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
     inset 0 -1px 0 rgba(0, 0, 0, 0.03);
 
-  /* Animation */
+  
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Layout */
+  
   --container-sm: 640px;
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
 }
 
-/* Dark mode colors */
+
 @media (prefers-color-scheme: dark) {
   :root {
-    /* RGB versions for opacity control (Dark Mode) */
+    
     --color-gray-400-rgb: 119, 124, 124;
     --color-teal-300-rgb: 50, 184, 198;
     --color-gray-300-rgb: 167, 169, 169;
     --color-gray-200-rgb: 245, 245, 245;
 
-    /* Background color tokens (Dark Mode) */
-    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
-    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
-    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
-    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
-    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
-    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
-    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
-    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+    
+    --color-bg-1: rgba(29, 78, 216, 0.15); 
+    --color-bg-2: rgba(180, 83, 9, 0.15); 
+    --color-bg-3: rgba(21, 128, 61, 0.15); 
+    --color-bg-4: rgba(185, 28, 28, 0.15); 
+    --color-bg-5: rgba(107, 33, 168, 0.15); 
+    --color-bg-6: rgba(194, 65, 12, 0.15); 
+    --color-bg-7: rgba(190, 24, 93, 0.15); 
+    --color-bg-8: rgba(8, 145, 178, 0.15); 
 
-    /* Semantic Color Tokens (Dark Mode) */
+    
     --color-background: var(--color-charcoal-700);
     --color-surface: var(--color-charcoal-800);
     --color-text: var(--color-gray-200);
@@ -189,7 +189,7 @@
     --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
-    /* Common style patterns - updated for dark mode */
+    
     --focus-ring: 0 0 0 3px var(--color-focus-ring);
     --focus-outline: 2px solid var(--color-primary);
     --status-bg-opacity: 0.15;
@@ -197,7 +197,7 @@
     --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-    /* RGB versions for dark mode */
+    
     --color-success-rgb: var(--color-teal-300-rgb);
     --color-error-rgb: var(--color-red-400-rgb);
     --color-warning-rgb: var(--color-orange-400-rgb);
@@ -205,25 +205,25 @@
   }
 }
 
-/* Data attribute for manual theme switching */
+
 [data-color-scheme="dark"] {
-  /* RGB versions for opacity control (dark mode) */
+  
   --color-gray-400-rgb: 119, 124, 124;
   --color-teal-300-rgb: 50, 184, 198;
   --color-gray-300-rgb: 167, 169, 169;
   --color-gray-200-rgb: 245, 245, 245;
 
-  /* Colorful background palette - Dark Mode */
-  --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
-  --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
-  --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
-  --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
-  --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
-  --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
-  --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
-  --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+  
+  --color-bg-1: rgba(29, 78, 216, 0.15); 
+  --color-bg-2: rgba(180, 83, 9, 0.15); 
+  --color-bg-3: rgba(21, 128, 61, 0.15); 
+  --color-bg-4: rgba(185, 28, 28, 0.15); 
+  --color-bg-5: rgba(107, 33, 168, 0.15); 
+  --color-bg-6: rgba(194, 65, 12, 0.15); 
+  --color-bg-7: rgba(190, 24, 93, 0.15); 
+  --color-bg-8: rgba(8, 145, 178, 0.15); 
 
-  /* Semantic Color Tokens (Dark Mode) */
+  
   --color-background: var(--color-charcoal-700);
   --color-surface: var(--color-charcoal-800);
   --color-text: var(--color-gray-200);
@@ -248,7 +248,7 @@
   --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
   --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
-  /* Common style patterns - updated for dark mode */
+  
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
   --status-bg-opacity: 0.15;
@@ -256,7 +256,7 @@
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-  /* RGB versions for dark mode */
+  
   --color-success-rgb: var(--color-teal-300-rgb);
   --color-error-rgb: var(--color-red-400-rgb);
   --color-warning-rgb: var(--color-orange-400-rgb);
@@ -264,12 +264,12 @@
 }
 
 [data-color-scheme="light"] {
-  /* RGB versions for opacity control (light mode) */
+  
   --color-brown-600-rgb: 94, 82, 64;
   --color-teal-500-rgb: 33, 128, 141;
   --color-slate-900-rgb: 19, 52, 59;
 
-  /* Semantic Color Tokens (Light Mode) */
+  
   --color-background: var(--color-cream-50);
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
@@ -290,14 +290,14 @@
   --color-info: var(--color-slate-500);
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
 
-  /* RGB versions for light mode */
+  
   --color-success-rgb: var(--color-teal-500-rgb);
   --color-error-rgb: var(--color-red-500-rgb);
   --color-warning-rgb: var(--color-orange-500-rgb);
   --color-info-rgb: var(--color-slate-500-rgb);
 }
 
-/* Base styles */
+
 html {
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
@@ -319,7 +319,7 @@ body {
   box-sizing: inherit;
 }
 
-/* Typography */
+
 h1,
 h2,
 h3,
@@ -390,7 +390,7 @@ pre code {
   padding: 0;
 }
 
-/* Buttons */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -469,7 +469,7 @@ pre code {
   cursor: not-allowed;
 }
 
-/* Form elements */
+
 .form-control {
   display: block;
   width: 100%;
@@ -501,14 +501,14 @@ select.form-control {
   padding-right: var(--space-32);
 }
 
-/* Add a dark mode specific caret */
+
 @media (prefers-color-scheme: dark) {
   select.form-control {
     background-image: var(--select-caret-dark);
   }
 }
 
-/* Also handle data-color-scheme */
+
 [data-color-scheme="dark"] select.form-control {
   background-image: var(--select-caret-dark);
 }
@@ -533,7 +533,7 @@ select.form-control {
   margin-bottom: var(--space-16);
 }
 
-/* Card component */
+
 .card {
   background-color: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -557,7 +557,7 @@ select.form-control {
   border-bottom: 1px solid var(--color-card-border-inner);
 }
 
-/* Status indicators - simplified with CSS variables */
+
 .status {
   display: inline-flex;
   align-items: center;
@@ -607,7 +607,7 @@ select.form-control {
     rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
 }
 
-/* Container layout */
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -637,7 +637,7 @@ select.form-control {
   }
 }
 
-/* Utility classes */
+
 .flex {
   display: flex;
 }
@@ -708,7 +708,7 @@ select.form-control {
   display: none;
 }
 
-/* Accessibility */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -726,7 +726,7 @@ select.form-control {
   outline-offset: 2px;
 }
 
-/* Dark mode specifics */
+
 [data-color-scheme="dark"] .btn--outline {
   border: 1px solid var(--color-border-secondary);
 }
@@ -737,8 +737,8 @@ select.form-control {
     format('woff2');
 }
 
-/* END PERPLEXITY DESIGN SYSTEM */
-/* Game-specific styles */
+
+
 .game-container {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--color-bg-3), var(--color-bg-1));
@@ -763,7 +763,7 @@ select.form-control {
   margin: 0 var(--space-8);
 }
 
-/* Start Screen */
+
 .start-screen {
   max-width: 600px;
   width: 100%;
@@ -794,7 +794,7 @@ select.form-control {
   margin-bottom: var(--space-8);
 }
 
-/* Difficulty Selection */
+
 .difficulty-selection {
   margin-bottom: var(--space-32);
 }
@@ -844,7 +844,7 @@ select.form-control {
   line-height: var(--line-height-normal);
 }
 
-/* Stats Display */
+
 .stats-container {
   display: flex;
   justify-content: center;
@@ -869,7 +869,7 @@ select.form-control {
   margin-top: var(--space-4);
 }
 
-/* Game Interface */
+
 .game-interface {
   max-width: 800px;
   width: 100%;
@@ -906,7 +906,7 @@ select.form-control {
   margin-top: var(--space-4);
 }
 
-/* Road Visualization */
+
 .road-container {
   background: var(--color-surface);
   border: 1px solid var(--color-card-border);
@@ -961,7 +961,7 @@ select.form-control {
   50% { transform: scale(1.2); }
 }
 
-/* Game Controls */
+
 .game-controls {
   background: var(--color-surface);
   padding: var(--space-20);
@@ -1034,7 +1034,7 @@ select.form-control {
   cursor: not-allowed;
 }
 
-/* Game Status */
+
 .game-status {
   text-align: center;
   padding: var(--space-16);
@@ -1068,7 +1068,7 @@ select.form-control {
   color: var(--color-text-secondary);
 }
 
-/* Progress Indicator */
+
 .progress-container {
   margin: var(--space-16) 0;
 }
@@ -1088,7 +1088,7 @@ select.form-control {
   transition: width var(--duration-normal) var(--ease-standard);
 }
 
-/* Risk Indicator */
+
 .risk-indicator {
   display: flex;
   align-items: center;
@@ -1105,7 +1105,7 @@ select.form-control {
 .risk-medium { color: var(--color-warning); }
 .risk-high { color: var(--color-error); }
 
-/* High Scores */
+
 .high-scores {
   background: var(--color-surface);
   border: 1px solid var(--color-card-border);
@@ -1143,7 +1143,7 @@ select.form-control {
   color: var(--color-primary);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .game-container {
     padding: var(--space-12);

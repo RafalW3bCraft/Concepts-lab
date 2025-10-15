@@ -9,7 +9,6 @@ interface SlotsState {
   lastWin: number;
   bet: number;
   
-  // Actions
   spin: () => void;
   canSpin: () => boolean;
 }
@@ -33,7 +32,6 @@ export const useSlots = create<SlotsState>((set, get) => ({
     
     if (!state.canSpin()) return;
     
-    // Deduct bet amount
     if (!casino.removeCredits(state.bet)) return;
     
     set({ 
@@ -44,11 +42,9 @@ export const useSlots = create<SlotsState>((set, get) => ({
     
     casino.recordSpin();
     
-    // Generate result
     const result = generateSlotResult();
     const payout = calculatePayout(result, state.bet);
     
-    // Stop spinning after delay
     setTimeout(() => {
       set({
         reels: result.symbols.map(symbol => SYMBOLS.indexOf(symbol)),

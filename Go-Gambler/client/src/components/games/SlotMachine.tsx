@@ -27,7 +27,6 @@ export default function SlotMachine() {
   const { totalCredits } = useCasino();
   const { playHit, playSuccess } = useAudio();
 
-  // Handle reel spinning animation
   useFrame((state, delta) => {
     if (isSpinning) {
       if (reel1Ref.current) {
@@ -40,7 +39,6 @@ export default function SlotMachine() {
         reel3Ref.current.rotation.x += spinSpeed[2] * delta;
       }
     } else {
-      // When not spinning, ensure reels show the correct symbols
       if (reel1Ref.current) {
         reel1Ref.current.rotation.x = (reels[0] / SYMBOLS.length) * Math.PI * 2;
       }
@@ -53,7 +51,6 @@ export default function SlotMachine() {
     }
   });
 
-  // Play sound effects
   useEffect(() => {
     if (isSpinning) {
       playHit();
@@ -74,17 +71,14 @@ export default function SlotMachine() {
 
   const renderReel = (reelIndex: number, reelRef: React.RefObject<THREE.Group>, position: [number, number, number]) => (
     <group position={position}>
-      {/* Reel frame */}
       <Box args={[2, 6, 0.5]} position={[0, 0, 0.5]}>
         <meshStandardMaterial color="#2c2c54" />
       </Box>
       
-      {/* Reel symbols */}
       <group ref={reelRef}>
         {SYMBOLS.map((symbol, index) => {
           const angle = (index / SYMBOLS.length) * Math.PI * 2;
           const radius = 1.5;
-          // Adjust rotation to show the correct symbol when not spinning
           const adjustedAngle = isSpinning ? angle : angle - (reelIndex / SYMBOLS.length) * Math.PI * 2;
           return (
             <Text
@@ -106,7 +100,6 @@ export default function SlotMachine() {
         })}
       </group>
       
-      {/* Reel window */}
       <Box args={[1.8, 2, 0.1]} position={[0, 0, 1]}>
         <meshStandardMaterial
           color="#000000"
@@ -119,17 +112,16 @@ export default function SlotMachine() {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      {/* Slot machine cabinet */}
       <Box args={[12, 8, 4]} position={[0, 0, -1]}>
         <meshStandardMaterial color="#8B0000" />
       </Box>
 
-      {/* Machine top */}
+      
       <Box args={[12, 1, 4]} position={[0, 4.5, -1]}>
         <meshStandardMaterial color="#ffd700" />
       </Box>
 
-      {/* Title */}
+      
       <Text
         position={[0, 3.5, 2]}
         fontSize={0.8}
@@ -140,12 +132,12 @@ export default function SlotMachine() {
         LUCKY SLOTS
       </Text>
 
-      {/* Reels */}
+      
       {renderReel(reels[0], reel1Ref, [-3, 0, 2])}
       {renderReel(reels[1], reel2Ref, [0, 0, 2])}
       {renderReel(reels[2], reel3Ref, [3, 0, 2])}
 
-      {/* Credits display */}
+      
       <Box args={[4, 1, 0.2]} position={[-3, -2.5, 2]}>
         <meshStandardMaterial color="#000000" />
       </Box>
@@ -159,7 +151,7 @@ export default function SlotMachine() {
         CREDITS: {totalCredits}
       </Text>
 
-      {/* Last win display */}
+      
       <Box args={[4, 1, 0.2]} position={[3, -2.5, 2]}>
         <meshStandardMaterial color="#000000" />
       </Box>
@@ -173,7 +165,7 @@ export default function SlotMachine() {
         WIN: {lastWin}
       </Text>
 
-      {/* Spin button */}
+      
       <Box
         args={[3, 1, 0.5]}
         position={[0, -3.5, 2]}
@@ -194,7 +186,7 @@ export default function SlotMachine() {
         {isSpinning ? "SPINNING..." : "SPIN"}
       </Text>
 
-      {/* Paylines */}
+      
       {[...Array(3)].map((_, i) => (
         <Box
           key={i}

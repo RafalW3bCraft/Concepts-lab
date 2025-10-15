@@ -20,7 +20,6 @@ export default function CreditDisplay({ credits }: CreditDisplayProps) {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        // Easing function
         const easeOut = 1 - Math.pow(1 - progress, 3);
         const currentValue = Math.round(startValue + (endValue - startValue) * easeOut);
         

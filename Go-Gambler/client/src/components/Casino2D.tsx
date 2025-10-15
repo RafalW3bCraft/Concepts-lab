@@ -10,7 +10,7 @@ export default function Casino2D() {
     <div className="casino-2d">
       <div className="casino-background">
         <div className="casino-main-area">
-          {/* Render current game */}
+          
           {currentGame === "slots" && <SlotMachine2D />}
           {currentGame === "blackjack" && <Blackjack2D />}
           {currentGame === "roulette" && <Roulette2D />}

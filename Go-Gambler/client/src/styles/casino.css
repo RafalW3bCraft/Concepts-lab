@@ -1,4 +1,4 @@
-/* 1WIN-Style Casino App */
+
 .casino-app {
   width: 100vw;
   height: 100vh;
@@ -9,7 +9,7 @@
   color: white;
 }
 
-/* Game UI Overlay */
+
 .game-ui {
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@
   pointer-events: auto;
 }
 
-/* Top UI Bar */
+
 .ui-top {
   position: absolute;
   top: 0;
@@ -63,7 +63,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Modern Credit Display */
+
 .credit-display {
   display: flex;
   align-items: center;
@@ -108,7 +108,7 @@
   text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
 }
 
-/* Modern Sound Toggle */
+
 .sound-toggle {
   background: linear-gradient(135deg, rgba(13, 20, 38, 0.9) 0%, rgba(26, 43, 92, 0.9) 100%);
   border: 1px solid rgba(59, 130, 246, 0.4);
@@ -138,7 +138,7 @@
   border-color: #ff6b6b;
 }
 
-/* Modern Game Selector */
+
 .game-selector {
   position: absolute;
   top: 100px;
@@ -216,7 +216,7 @@
   font-size: 0.9rem;
 }
 
-/* Instructions Panel */
+
 .instructions {
   position: absolute;
   bottom: 20px;
@@ -242,7 +242,7 @@
   line-height: 1.4;
 }
 
-/* Modern Mobile Navigation */
+
 .mobile-nav {
   position: absolute;
   bottom: 24px;
@@ -282,7 +282,7 @@
   color: #3B82F6;
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 768px) {
   .ui-top {
     height: 60px;
@@ -348,7 +348,7 @@
   }
 }
 
-/* Modern 2D Casino */
+
 .casino-2d {
   width: 100%;
   height: 100vh;
@@ -377,7 +377,7 @@
   justify-content: center;
 }
 
-/* Modern Slot Machine */
+
 .slot-machine-2d {
   width: 100%;
   height: 100%;
@@ -482,7 +482,7 @@
   margin-top: 5px;
 }
 
-/* Modern Blackjack */
+
 .blackjack-2d {
   width: 100%;
   height: 100%;
@@ -617,7 +617,7 @@
   font-weight: bold;
 }
 
-/* Modern Roulette */
+
 .roulette-2d {
   width: 100%;
   height: 100%;
@@ -909,7 +909,7 @@
   font-size: 0.9rem;
 }
 
-/* Animations */
+
 @keyframes glow {
   0%, 100% {
     box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
@@ -978,7 +978,7 @@
   animation: glow 2s infinite;
 }
 
-/* Touch Optimizations */
+
 @media (hover: none) and (pointer: coarse) {
   .game-btn, .nav-btn, .sound-toggle {
     min-height: 44px;
@@ -995,7 +995,7 @@
   }
 }
 
-/* Loading States */
+
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -1037,7 +1037,7 @@
   margin: 0;
 }
 
-/* Game Loading States */
+
 .game-loading {
   opacity: 0.7;
   pointer-events: none;
@@ -1055,7 +1055,7 @@
   animation: pulse 1s infinite;
 }
 
-/* High DPI Displays */
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .casino-branding h1,
   .credit-value {
